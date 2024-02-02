@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+
+    <title>INNOBETO</title>
+    <style>
+        * {
+            font-family: 'Gowun Dodum', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #f8f9fa;
+        }
+
+        .menu-container .menu-items a {
+            text-decoration: none;
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .menu-container .menu-items a:hover {
+            background-color: #e0e0e0;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 10px;
+            background-color: #f8f9fa;
+        }
+
+        .search-container input[type="text"] {
+            border: 2px solid #6c757d;
+            border-radius: 10px;
+            padding: 10px; /* Increased padding for better aesthetics */
+            outline: none;
+        }
+
+        .search-container button {
+            margin-left: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .jumbotron {
+            background-color: #007bff;
+            background-image: 
+                linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('https://th.bing.com/th?id=OIP.QU-5_WFLw-sfEoRy1Ru7DAHaEK&w=333&h=187&c=8&rs=1&qlt=90&o=6&dpr=1.7&pid=3.1&rm=2');
+            color: #fff;
+            text-align: center;
+            padding: 3rem 0; /* Increased padding for better aesthetics */
+            background-size:calc(12);
+        }
+
+        .jumbotron h1, .jumbotron h5 {
+            margin-bottom: 10px; /* Adjusted margin for better spacing */
+        }
+
+        .container {
+            margin-top: 20px; /* Added margin for better separation */
+        }
+
+        .mybox {
+            width: 95%;
+            max-width: 900px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px 0px rgb(176, 228, 245);
+            margin: 20px auto;
+            background-color: #fff; /* Added background color for better contrast */
+            border-radius: 15px; /* Added border radius for rounded corners */
+        }
+
+        .mybucket {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px; /* Added margin for better spacing */
+        }
+
+        .mybucket>input {
+            width: 80%;
+            padding: 10px; /* Adjusted padding for better aesthetics */
+        }
+
+        .mybucket>button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .mybucket>button:hover {
+            background-color: #0056b3;
+        }
+
+        .results {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .results>li {
+            background-color: #f8f9fa;
+            margin: 10px 0;
+            padding: 15px; /* Adjusted padding for better aesthetics */
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 0px 5px 0px #ddd; /* Added box shadow for depth */
+        }
+
+        .results>li>h2 {
+            max-width: 75%;
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+
+        .results>li>h2.done {
+            text-decoration: line-through;
+        }
+
+        .results>li>button {
+            background-color: #fff;
+            border: none;
+            padding: 8px; /* Adjusted padding for better aesthetics */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .results>li>button:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu-container">
+        <div class="menu-items">
+            <a href="#">Menu</a>
+            <a href="#">Home</a>
+            <a href="#">Contact us</a>
+            <a href="#">Hot topic</a>
+        </div>
+        <div class="search-container">
+            <input type="text" id="query" placeholder="Search by title, author, or abstract...">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </div>
+
+    <div class="jumbotron">
+        <h1 class="display-4">INNOBETO</h1>
+        <h5 class="display-5">River Of Knowlegde</h5>
+    </div>
+
+    <div class="container">
+        <div class="mybox">
+            <div class="mybucket">
+                <input id="bucket" class="form-control" type="text" placeholder="Write/copy/paste your article here">
+                <button onclick="saveBucket()" type="button" class="btn btn-outline-primary">Publish it</button>
+            </div>
+            <hr class="my-4">
+            <ul class="results" id="bucket-list"></ul>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            showBucket();
+        });
+
+        function showBucket() {
+            $('#bucket-list').empty();
+            $.ajax({
+                type: "GET",
+                url: "/bucket",
+                success: function (response) {
+                    let buckets = response.buckets;
+                        buckets.forEach(bucket => {
+                        let { num, bucket: title, done } = bucket;
+                        let temp_html = `
+                            <li>
+                                <h2>${title}</h2>
+                                ${done === 0 ? `
+                                <button onclick="thumbsUp(${num})" type="button" class="btn btn-outline-primary"><i class="fas fa-thumbs-up"></i></button>` : ''}
+                                <button onclick="thumbsDown(${num})" type="button" class="btn btn-outline-danger"><i class="fas fa-thumbs-down"></i></button>
+                                <button onclick="deleteBucket(${num})" type="button" class="btn btn-outline-danger">Delete</button>
+                            </li>
+                        `;
+                        $('#bucket-list').append(temp_html);
+                    });
+                }
+            });
+        }
+
+        function thumbsUp(num) {
+          console.log(num); // Log the value to the console
+        $.ajax({
+            type: "POST",
+            url: "/thumbs/up",
+            data: { num_give: num },
+            success: function (response) {
+            alert(response.msg);
+            showBucket();
+        }
+    });
+}
+
+
+        function thumbsDown(num) {
+            console.log(num);
+            $.ajax({
+                type: "POST",
+                url: "/thumbs/down",
+                data: { num_give: num },
+                success: function (response) {
+                    alert(response.msg);
+                    showBucket();
+                }
+            });
+        }
+
+        function saveBucket() {
+            let bucket = $('#bucket').val().trim();
+            if (bucket === '') {
+                alert('Please add your research paper.');
+                return;
+            }
+            $.ajax({
+                type: "POST",
+                url: "/bucket",
+                data: { bucket_give: bucket },
+                success: function (response) {
+                    alert(response.msg);
+                    $('#bucket').val('');
+                    showBucket();
+                }
+            });
+        }
+
+        function deleteBucket(num) {
+            if (!confirm("Are you sure you want to delete this item?")) {
+                return;
+            }
+            $.ajax({
+                type: "POST",
+                url: "/delete",
+                data: { num_give: num },
+                success: function (response) {
+                    alert(response.msg);
+                    showBucket();
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
